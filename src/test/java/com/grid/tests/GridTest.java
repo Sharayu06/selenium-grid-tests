@@ -1,9 +1,7 @@
 package com.grid.tests;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterMethod;
@@ -19,46 +17,39 @@ public class GridTest {
     @Parameters("browser")
     @Test
     public void openGoogleOnGrid(String browser) throws Exception {
-    	
-    	System.out.println("===== SYSTEM PROPERTIES DUMP =====");
-    	System.getProperties().forEach((k, v) ->
-    	        System.out.println(k + " = " + v)
-    	);
-    	System.out.println("=================================");
 
-
-        String executionMode = System.getProperty("execution");
-
-        // 🔍 DEBUG (VERY IMPORTANT)
+        // Read execution mode: local or grid
+        String executionMode = System.getProperty("execution", "local");
         System.out.println("Execution mode = " + executionMode);
 
         if ("grid".equalsIgnoreCase(executionMode)) {
 
+            // Grid host (Jenkins / Docker / Local)
             String gridHost = System.getProperty("grid.host", "localhost");
-            System.out.println("Grid host = " + gridHost);
-
             URL gridUrl = new URL("http://" + gridHost + ":4444/wd/hub");
 
             if (browser.equalsIgnoreCase("chrome")) {
-                driver = new RemoteWebDriver(gridUrl, new ChromeOptions());
+                ChromeOptions options = new ChromeOptions();
+                options.setCapability("browserName", "chrome");
+                driver = new RemoteWebDriver(gridUrl, options);
+
             } else if (browser.equalsIgnoreCase("firefox")) {
-                driver = new RemoteWebDriver(gridUrl, new FirefoxOptions());
+                FirefoxOptions options = new FirefoxOptions();
+                options.setCapability("browserName", "firefox");
+                driver = new RemoteWebDriver(gridUrl, options);
             }
 
         } else {
-            // ✅ LOCAL execution
-            if (browser.equalsIgnoreCase("chrome")) {
-                driver = new ChromeDriver();
-            } else if (browser.equalsIgnoreCase("firefox")) {
-                driver = new FirefoxDriver();
-            }
+            throw new RuntimeException(
+                "Local execution is disabled in GridTest. Use -Dexecution=grid"
+            );
         }
 
         driver.get("https://www.google.com");
         System.out.println("Title: " + driver.getTitle());
     }
 
-    @AfterMethod
+    @AfterMethod(alwaysRun = true)
     public void tearDown() {
         if (driver != null) {
             driver.quit();

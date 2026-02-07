@@ -8,7 +8,6 @@
         <methods>
           <include name="openGoogleOnGrid" invocation-numbers="0"/>
           <include name="tearDown"/>
-          <include name="setUp"/>
         </methods>
       </class> <!-- com.grid.tests.GridTest -->
     </classes>
@@ -20,7 +19,6 @@
         <methods>
           <include name="openGoogleOnGrid" invocation-numbers="0"/>
           <include name="tearDown"/>
-          <include name="setUp"/>
         </methods>
       </class> <!-- com.grid.tests.GridTest -->
     </classes>

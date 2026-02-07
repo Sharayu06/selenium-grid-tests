@@ -1,45 +1,52 @@
 package com.grid.tests;
 
-import java.net.MalformedURLException;
 import java.net.URL;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Parameters;
 
 public class BaseTest {
 
     protected WebDriver driver;
 
-    @Parameters("browser")
     @BeforeMethod
-    public void setUp(String browser) throws MalformedURLException {
+    public void setUp() throws Exception {
 
-        // Selenium Grid Hub URL
-        URL gridUrl = new URL("http://localhost:4444/wd/hub");
+        // Read execution mode from Maven / Jenkins
+        // Default = local (safe fallback)
+        String executionMode = System.getProperty("execution", "local");
+        System.out.println("Execution mode = " + executionMode);
 
-        if (browser.equalsIgnoreCase("chrome")) {
+        if (executionMode.equalsIgnoreCase("grid")) {
 
-            ChromeOptions options = new ChromeOptions();
-            options.addArguments("--start-maximized");
+            // Grid host (Jenkins / Docker / Local)
+            String gridHost = System.getProperty("grid.host", "localhost");
+            String gridUrl = "http://" + gridHost + ":4444/wd/hub";
 
-            // RemoteWebDriver connects to Grid instead of local browser
-            driver = new RemoteWebDriver(gridUrl, options);
+            System.out.println("Connecting to Selenium Grid at: " + gridUrl);
 
-        } else if (browser.equalsIgnoreCase("firefox")) {
+            DesiredCapabilities capabilities = new DesiredCapabilities();
+            capabilities.setBrowserName("chrome");
 
-            FirefoxOptions options = new FirefoxOptions();
-            driver = new RemoteWebDriver(gridUrl, options);
+            driver = new RemoteWebDriver(new URL(gridUrl), capabilities);
 
+        } else {
+
+            System.out.println("Starting local Chrome browser");
+            driver = new ChromeDriver();
         }
+
+        driver.manage().window().maximize();
+        driver.get("https://www.google.com");   // simple, reliable test URL
     }
 
     @AfterMethod
     public void tearDown() {
+
         if (driver != null) {
             driver.quit();
         }

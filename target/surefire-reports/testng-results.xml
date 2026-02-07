@@ -2,12 +2,12 @@
 <testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2026-02-08T00:30:56 IST" name="Grid Parallel Suite" finished-at="2026-02-08T00:31:14 IST" duration-ms="18216">
+  <suite started-at="2026-02-08T01:40:56 IST" name="Grid Parallel Suite" finished-at="2026-02-08T01:41:08 IST" duration-ms="12082">
     <groups>
     </groups>
-    <test started-at="2026-02-08T00:30:56 IST" name="Chrome Test" finished-at="2026-02-08T00:31:03 IST" duration-ms="7196">
+    <test started-at="2026-02-08T01:40:56 IST" name="Chrome Test" finished-at="2026-02-08T01:41:03 IST" duration-ms="6905">
       <class name="com.grid.tests.GridTest">
-        <test-method signature="openGoogleOnGrid(java.lang.String)[pri:0, instance:com.grid.tests.GridTest@34b7ac2f]" started-at="2026-02-08T00:30:56 IST" name="openGoogleOnGrid" finished-at="2026-02-08T00:31:02 IST" duration-ms="6639" status="PASS">
+        <test-method signature="openGoogleOnGrid(java.lang.String)[pri:0, instance:com.grid.tests.GridTest@34b7ac2f]" started-at="2026-02-08T01:40:56 IST" name="openGoogleOnGrid" finished-at="2026-02-08T01:41:02 IST" duration-ms="6495" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -18,15 +18,15 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- openGoogleOnGrid -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.grid.tests.GridTest@34b7ac2f]" started-at="2026-02-08T00:31:02 IST" name="tearDown" finished-at="2026-02-08T00:31:03 IST" duration-ms="499" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.grid.tests.GridTest@34b7ac2f]" started-at="2026-02-08T01:41:03 IST" name="tearDown" finished-at="2026-02-08T01:41:03 IST" duration-ms="337" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
       </class> <!-- com.grid.tests.GridTest -->
     </test> <!-- Chrome Test -->
-    <test started-at="2026-02-08T00:30:56 IST" name="Firefox Test" finished-at="2026-02-08T00:31:14 IST" duration-ms="18216">
+    <test started-at="2026-02-08T01:40:56 IST" name="Firefox Test" finished-at="2026-02-08T01:41:08 IST" duration-ms="12082">
       <class name="com.grid.tests.GridTest">
-        <test-method signature="openGoogleOnGrid(java.lang.String)[pri:0, instance:com.grid.tests.GridTest@6dc17b83]" started-at="2026-02-08T00:30:56 IST" name="openGoogleOnGrid" finished-at="2026-02-08T00:31:10 IST" duration-ms="14587" status="PASS">
+        <test-method signature="openGoogleOnGrid(java.lang.String)[pri:0, instance:com.grid.tests.GridTest@6dc17b83]" started-at="2026-02-08T01:40:56 IST" name="openGoogleOnGrid" finished-at="2026-02-08T01:41:07 IST" duration-ms="10679" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -37,7 +37,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- openGoogleOnGrid -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.grid.tests.GridTest@6dc17b83]" started-at="2026-02-08T00:31:10 IST" name="tearDown" finished-at="2026-02-08T00:31:14 IST" duration-ms="3574" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.grid.tests.GridTest@6dc17b83]" started-at="2026-02-08T01:41:07 IST" name="tearDown" finished-at="2026-02-08T01:41:08 IST" duration-ms="1345" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
