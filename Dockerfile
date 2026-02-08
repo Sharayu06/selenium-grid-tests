@@ -4,8 +4,8 @@ WORKDIR /app
 
 COPY pom.xml .
 COPY src ./src
-COPY testng.xml .
+COPY src/test/resources/testng.xml .
 
 RUN mvn dependency:resolve
 
-CMD ["mvn", "clean", "test", "-DsuiteXmlFile=testng.xml"]
+CMD ["mvn", "clean", "test", "-Dexecution=grid"]
