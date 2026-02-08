@@ -103,12 +103,12 @@
                     <div class="method-list-content passed suite-Grid_Parallel_Suite">
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Grid_Parallel_Suite" title="com.grid.tests.GridTest" class="method navigator-link" hash-for-method="openGoogleOnGrid(chrome)">openGoogleOnGrid(chrome)</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Grid_Parallel_Suite" title="com.grid.tests.GridTest" class="method navigator-link" hash-for-method="openGoogle">openGoogle</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Grid_Parallel_Suite" title="com.grid.tests.GridTest" class="method navigator-link" hash-for-method="openGoogleOnGrid(firefox)">openGoogleOnGrid(firefox)</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Grid_Parallel_Suite" title="com.grid.tests.GridTest" class="method navigator-link" hash-for-method="openGoogle">openGoogle</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content passed suite-Grid_Parallel_Suite -->
@@ -131,18 +131,16 @@
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="openGoogleOnGrid(chrome)">
-                  </a> <!-- openGoogleOnGrid(chrome) -->
-                  <span class="method-name">openGoogleOnGrid</span>
-                  <span class="parameters">(chrome)</span>
+                  <a name="openGoogle">
+                  </a> <!-- openGoogle -->
+                  <span class="method-name">openGoogle</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="openGoogleOnGrid(firefox)">
-                  </a> <!-- openGoogleOnGrid(firefox) -->
-                  <span class="method-name">openGoogleOnGrid</span>
-                  <span class="parameters">(firefox)</span>
+                  <a name="openGoogle">
+                  </a> <!-- openGoogle -->
+                  <span class="method-name">openGoogle</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
@@ -211,18 +209,18 @@ data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
 data.addRows(2);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'openGoogleOnGrid')
+data.setCell(0, 1, 'openGoogle')
 data.setCell(0, 2, 'com.grid.tests.GridTest')
-data.setCell(0, 3, 10679);
+data.setCell(0, 3, 1778);
 data.setCell(1, 0, 1)
-data.setCell(1, 1, 'openGoogleOnGrid')
+data.setCell(1, 1, 'openGoogle')
 data.setCell(1, 2, 'com.grid.tests.GridTest')
-data.setCell(1, 3, 6495);
+data.setCell(1, 3, 986);
 window.suiteTableData['Grid_Parallel_Suite']= { tableData: data, tableDiv: 'times-div-Grid_Parallel_Suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 12 seconds</span>
+              <span class="suite-total-time">Total running time: 8 seconds</span>
               <div id="times-div-Grid_Parallel_Suite">
               </div> <!-- times-div-Grid_Parallel_Suite -->
             </div> <!-- times-div -->
@@ -249,21 +247,29 @@ return data;
           <div class="main-panel-content rounded-window-bottom">
             <div class="chronological-class">
               <div class="chronological-class-name">com.grid.tests.GridTest</div> <!-- chronological-class-name -->
-              <div class="test-method">
-                <span class="method-name">openGoogleOnGrid(chrome)</span>
+              <div class="configuration-method before">
+                <span class="method-name">setUp(chrome)</span>
                 <span class="method-start">0 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">openGoogleOnGrid(firefox)</span>
+              </div> <!-- configuration-method before -->
+              <div class="configuration-method before">
+                <span class="method-name">setUp(chrome)</span>
                 <span class="method-start">0 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">openGoogle</span>
+                <span class="method-start">4804 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">tearDown</span>
-                <span class="method-start">6505 ms</span>
+                <span class="method-start">6589 ms</span>
               </div> <!-- configuration-method after -->
+              <div class="test-method">
+                <span class="method-name">openGoogle</span>
+                <span class="method-start">7546 ms</span>
+              </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">tearDown</span>
-                <span class="method-start">10680 ms</span>
+                <span class="method-start">8533 ms</span>
               </div> <!-- configuration-method after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

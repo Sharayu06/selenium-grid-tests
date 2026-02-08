@@ -1,52 +1,49 @@
 package com.grid.tests;
 
-import java.net.URL;
-
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Parameters;
+
+import java.net.URL;
 
 public class BaseTest {
 
     protected WebDriver driver;
 
+    @Parameters("browser")
     @BeforeMethod
-    public void setUp() throws Exception {
+    public void setUp(String browser) throws Exception {
 
-        // Read execution mode from Maven / Jenkins
-        // Default = local (safe fallback)
-        String executionMode = System.getProperty("execution", "local");
-        System.out.println("Execution mode = " + executionMode);
+        String execution = System.getProperty("execution", "local");
+        String gridHost = System.getProperty("grid.host", "localhost");
 
-        if (executionMode.equalsIgnoreCase("grid")) {
+        System.out.println("Execution mode = " + execution);
+        System.out.println("Browser = " + browser);
 
-            // Grid host (Jenkins / Docker / Local)
-            String gridHost = System.getProperty("grid.host", "localhost");
-            String gridUrl = "http://" + gridHost + ":4444/wd/hub";
+        if (execution.equalsIgnoreCase("grid")) {
 
-            System.out.println("Connecting to Selenium Grid at: " + gridUrl);
+            URL gridUrl = new URL("http://" + gridHost + ":4444/wd/hub");
 
-            DesiredCapabilities capabilities = new DesiredCapabilities();
-            capabilities.setBrowserName("chrome");
-
-            driver = new RemoteWebDriver(new URL(gridUrl), capabilities);
+            if (browser.equalsIgnoreCase("chrome")) {
+                ChromeOptions options = new ChromeOptions();
+                driver = new RemoteWebDriver(gridUrl, options);
+            } 
+            else if (browser.equalsIgnoreCase("firefox")) {
+                FirefoxOptions options = new FirefoxOptions();
+                driver = new RemoteWebDriver(gridUrl, options);
+            }
 
         } else {
-
-            System.out.println("Starting local Chrome browser");
-            driver = new ChromeDriver();
+            throw new RuntimeException("Local execution disabled for Grid project");
         }
-
-        driver.manage().window().maximize();
-        driver.get("https://www.google.com");   // simple, reliable test URL
     }
 
     @AfterMethod
     public void tearDown() {
-
         if (driver != null) {
             driver.quit();
         }
