@@ -1,0 +1,1 @@
+{"uuid":"a7ad86fc-a6b6-405a-ae07-029ce43a7e46","name":"com.grid.tests.BaseTest.setUp","children":["f9344e51-913e-4495-8b48-318afa651732"],"description":"","befores":[{"name":"setUp","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1770575363706,"stop":1770575367356}],"afters":[],"start":1770575363705,"stop":1770575367357}
